@@ -1,7 +1,10 @@
 import { Given, When, Then, And } from "@cucumber/cucumber";
+import HomePage from "../pages/home.page";
 
 Given('que estou no site Blazedemo', function () {
-
+abrir_site
+// await expert(HomePage.titulo)            //indicada na literatura
+HomePage.verificar_mensagem_boas_vinda()    //rebelde 
 });
 
 
@@ -11,12 +14,12 @@ When('seleciono a origem como {string}', function (string) {
 
 
 
-When('seleciono o destino como {string}', function (string) {
+And('seleciono o destino como {string}', function (string) {
 
 });
 
 
-When('clico no botao {string}', function (string) {
+And('clico no botao {string}', function (string) {
 
 });
 

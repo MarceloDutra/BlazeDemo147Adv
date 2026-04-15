@@ -17,7 +17,7 @@ Funcionalidade: Compra de Passagem
         E se exibe a mensagem de agradecimeto "Thank you for your purchase todasy!"
         E se contem a informacao "Amount" como "555 USD"
         
-    Cenario: Compra com Sucesso DDT
+    Esquema do Cenario: Compra com Sucesso DDT
         Dado que estou no site Blazedemo
         Quando seleciono a origem como "<origem>"
         E seleciono o destino como "<destino>"
