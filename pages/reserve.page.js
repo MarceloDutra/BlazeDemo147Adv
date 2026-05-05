@@ -19,7 +19,7 @@ export default class ReservePage {
         }
  
     }
- 
+    // jeito rebelde
     async verificar_titulo(mensagem_origem_destino){
         await this.page.waitForSelector(this.titulo)
         const tituloSecao = await this.page.textContent(this.titulo)

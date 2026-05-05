@@ -17,7 +17,7 @@ And('seleciono o destino como {string}', function (destino) {
     HomePage.selecionar_destino(destino)
 });
  
-// Versão que clica no botão a partir do texto escrito no botão
+// Versão que clica no botão a partir do texto escrito no botão - bloco da 26 a 28 feature
 And('clico no botao {string}', function (texto_botao) {
     HomePage.clicar_find_flights(texto_botao)
 });
@@ -29,73 +29,55 @@ And('clico no botao', function () {
     HomePage.clicar_find_flights()
 });
  
-// Cenário simples
+// Cenário simples - Verifica a mensagem de cidade de origem e destino
 Then('verifico o texto {string}', function (mensagem_origem_destino) {
     ReservePage.verificar_titulo(mensagem_origem_destino)
 });
+
+Then('verifico se a url contem {string}', function (pagina) {
+    expect(page).toHaveURL(`/${pagina}\.php/`)
+});
+
+//linha 10 e 26
+When('seleciono o voo {string} da companhia {string}', function (voo, companhia) {
+    ReservePage.selecionar_voo(voo, companhia)
+});
+  
  
- 
- 
-Then('se a url contem {string}', function (string) {
- 
+When('preencho o nome como {string}', function (nome) {
+    PurchasePage.preencher_nome(nome)
 });
  
  
- 
-When('seleciono o voo {string} da companhia {string}', function (string, string2) {
- 
+When('seleciono a bandeira do cartao como {string}', function (bandeira) {
+    PurchasePage.selecionar_bandeira(bandeira)
 });
- 
- 
- 
-Then('verifico se a url contem {string}', function (string) {
- 
-});
- 
- 
- 
-When('preencho o nome como {string}', function (string) {
- 
-});
- 
- 
-When('seleciono a bandeira do cartao como {string}', function (string) {
- 
-});
- 
  
  
 When('marco a opcao {string}', function (string) {
- 
+    // Não estamos usando o paramentro que é recebido neste bloco - linhas 15 e 32 feature
+    PurchasePage.marcar_lembrete()
 });
- 
- 
  
 When('clico no botao {string}', function (string) {
- 
+    // Não estamos usando o paramentro que é recebido neste bloco - linha 14
+    PurchasePage.comprar_passagem()
 });
- 
- 
- 
-Then('verifico se a url contem {string}', function (string) {
- 
-});
- 
- 
  
 Then('se exibe a mensagem de agradecimento {string}', function (string) {
+    expect(page.locator(ConfirmationPage.mensagem)).toHaveText('Thank you for your purchase today!')
+});    
  
+Then('se contém a informacao {string} como {string}', function (quantia, preco) {
+// encontra a linha em que está escrita a quantia / "Amount"
+    const linha_preco = page.locator('tr').filter({ has: page.locator('td', { hasText: quantia }) })
+    // na linha selecionada, verifica se contém o valor/preco
+    expect(linha_preco).toContainText(preco)
 });
  
- 
- 
-Then('se contém a informacao {string} como {string}', function (string, string2) {
- 
-});
- 
- 
-Then('verifico o texto Flights from {string} to {string}', function (string, string2) {
- 
+// Esquema de Cenário - Verifica a mensagem contendo as duas cidades que recebe como parametro  
+Then('verifico o texto Flights from {string} to {string}', function (origem, destino) {
+expect(page.locator(ReservePage.titulo)).toHaveText(`Flights from ${origem} to ${destino}:`) 
 });
  
  
