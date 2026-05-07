@@ -40,3 +40,5 @@ Nosso projeto utilizará as seguintes abordagens:
 
            Entao
  
+
+ **************** Cópiar os comentários do GitHub da iterasys
