@@ -1,4 +1,5 @@
-export default class ConfirmationPage{
+//export default class ConfirmationPage{
+class ConfirmationPage {
 
     constructor(page){
         this.page = page
@@ -8,3 +9,5 @@ export default class ConfirmationPage{
     }
 
 }
+
+module.exports = ConfirmationPage  // padrão quando type = commonjs em package.json

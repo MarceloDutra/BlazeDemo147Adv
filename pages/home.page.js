@@ -1,4 +1,4 @@
-// export default class HomePage { // padrão para type = module
+// export default class HomePage { // padrão para type = module em package.json
 class HomePage {                   // padrão para type = commonjs em package.json
     // Construtor com o mapeamento dos elementos
     constructor(page){
@@ -43,6 +43,6 @@ class HomePage {                   // padrão para type = commonjs em package.js
  
 }
 
-module. exports = HomePage  // padrão quando type = commonjs em package.json
+module.exports = HomePage  // padrão quando type = commonjs em package.json
  
  

@@ -1,4 +1,4 @@
-const  { setBaseConstructor } = require('@cucumber/cucumber')
+const  { setWorldConstructor } = require('@cucumber/cucumber')
 const { chromium, firefox, webkit} = require('@playwright/test')
 const HomePage = require('../pages/home.page')
 const ReservePage = require('../pages/reserve.page')
@@ -12,11 +12,11 @@ class Base {
         const browser_name = process.env.BROWSER || 'chromium' // browser_desejado
         
         this.browser = await browsers[browser_name].launch({ headless: process.env.HEADLESS !== 'false'})
-        this.context = await this.browser.newContent({ baseURL: 'https://www.blazedemo.com' })
-        this.page = await this.context.newPAge()
+        this.context = await this.browser.newContext({ baseURL: 'https://www.blazedemo.com' })
+        this.page = await this.context.newPage()
 
         this.homePage = new HomePage(this.page)
-        this.requireeservePage = new ReservePage(this.page)
+        this.reservePage = new ReservePage(this.page)
         this.purchasePage = new PurchasePage(this.page)
         this.confirmationPage = new ConfirmationPage(this.page)
 
@@ -27,4 +27,4 @@ async fechar_browser() {
     if (this.browser) await this.browser.close()   
     }
 }
-setBaseConstructor(Base)
+setWorldConstructor(Base)

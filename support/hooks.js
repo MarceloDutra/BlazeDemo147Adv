@@ -1,7 +1,6 @@
-const { Before, After } = require('@cucumber/cucumber1')
+const { Before, After } = require('@cucumber/cucumber')
 
-/*
-*/
+/* ver git Correia */
 
 Before(async function (){
     await this.abrir_browser()

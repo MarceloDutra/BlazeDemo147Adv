@@ -14,7 +14,7 @@ Funcionalidade: Compra de Passagem
         E marco a opcao "Remember me"
         E clico "Purchase Flight"
         Entao verifico se a url contem "confirmation"
-        E se exibe a mensagem de agradecimeto "Thank you for your purchase todasy!"
+        E se exibe a mensagem de agradecimeto "Thank you for your purchase today!"
         E se contem a informacao "Amount" como "555 USD"
         
     Esquema do Cenario: Compra com Sucesso DDT
