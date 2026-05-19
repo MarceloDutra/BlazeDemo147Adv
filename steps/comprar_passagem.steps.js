@@ -38,11 +38,11 @@ Then('verifico o texto {string}', async function (mensagem_origem_destino) {
 });
 
 Then('verifico se a url contem {string}', async function (pagina) {
-    expect(this.page).toHaveURL(`/${pagina}\.php/`)
+    await expect(this.page).toHaveURL(`/${pagina}\.php`)
 });
 
 //linha 10 e 26
-When('seleciono o voo {string} da companhia {string}', async function (voo, companhia) {
+When('seleciono o {string} da {string}', async function (voo, companhia) {
     await this.reservePage.selecionar_voo(voo, companhia)
 });
   
@@ -62,31 +62,29 @@ When('marco a opcao {string}', async function (string) {
     await this.purchasePage.marcar_lembrete()
 });
  
-//When('clico no botao {string}', async function (string) {
-    // Não estamos usando o paramentro que é recebido neste bloco - linha 14 da feature
-//    await this.purchasePage.comprar_passagem()
+// abaixo sugestão de código do gemini IA
+//When('clico {string}', async function (textoBotao) {
+  // O Playwright precisa de async/await para interagir com o navegador
+  //await this.page.getByRole('button', { name: textoBotao, exact: true }).click();
 //});
 
-// abaixo sugestão de código do gemini IA
-When('clico {string}', async function (textoBotao) {
-  // O Playwright precisa de async/await para interagir com o navegador
-  await this.page.getByRole('button', { name: textoBotao, exact: true }).click();
+When('clico {string}', async function (string) {
+  // Não estamos usando o paramentro que é recebido neste bloco - linha 14 da feature
+  await this.purchasePage.comprar_passagem()
 });
- 
+
 Then('se exibe a mensagem de agradecimento {string}', async function (string) {
     await expect(this.page.locator(this.confirmationPage.mensagem)).toHaveText('Thank you for your purchase today!')
-});    
+});
  
-Then('se contém a informacao {string} como {string}', async function (quantia, preco) {
-// encontra a linha em que está escrita a quantia / "Amount"
+Then('se contem a informacao {string} como {string}', async function (quantia, preco) {
+    // encontra a linha em que está escrita a quantia / "Amount"
     const linha_preco = await this.page.locator('tr').filter({ has: this.page.locator('td', { hasText: quantia }) })
     // na linha selecionada, verifica se contém o valor/preco
     await expect(linha_preco).toContainText(preco)
 });
- 
-// Esquema de Cenário - Verifica a mensagem contendo as duas cidades que recebe como parametro  
+
+// Esquema de Cenário - Verifica a mensagem contendo as duas cidades que recebe como parametro
 Then('verifico o texto Flights from {string} to {string}', async function (origem, destino) {
-await expect(this.page.locator(this.reservePage.titulo)).toHaveText(`Flights from ${origem} to ${destino}:`) 
+    await expect(this.page.locator(this.reservePage.titulo)).toHaveText(`Flights from ${origem} to ${destino}:`)
 });
- 
- 

@@ -7,14 +7,14 @@ Funcionalidade: Compra de Passagem
         E clico no botao
         Entao verifico o texto "Flights from São Paolo to London:"
         E verifico se a url contem "reserve"
-        Quando seleciono o voo "9696" da companhia "Aer Lingus"
+        Quando seleciono o "9696" da "Aer Lingus"
         Entao verifico se a url contem "purchase"
         Quando preencho o nome como "Marcelo Dutra"
         E seleciono a bandeira do cartão como "amex"
         E marco a opcao "Remember me"
         E clico "Purchase Flight"
         Entao verifico se a url contem "confirmation"
-        E se exibe a mensagem de agradecimeto "Thank you for your purchase today!"
+        E se exibe a mensagem de agradecimento "Thank you for your purchase today!"
         E se contem a informacao "Amount" como "555 USD"
         
     Esquema do Cenario: Compra com Sucesso DDT
@@ -22,7 +22,7 @@ Funcionalidade: Compra de Passagem
         Quando seleciono a origem como "<origem>"
         E seleciono o destino como "<destino>"
         E clico no botao "Find Flights"
-        Entao verifico o texto "Flights from "<origem>" to "<destino>":"
+        Entao verifico o texto Flights from "<origem>" to "<destino>"
         E verifico se a url contem "reserve"
         Quando seleciono o "<voo>" da "<companhia>"
         Entao verifico se a url contem "purchase"
@@ -31,14 +31,14 @@ Funcionalidade: Compra de Passagem
         E marco a opcao "Remember me"
         E clico "Purchase Flight"
         Entao verifico se a url contem "confirmation"
-        E se exibe a mensagem de agradecimeto "Thank you for your purchase todasy!"
+        E se exibe a mensagem de agradecimento "Thank you for your purchase todasy!"
         E se contem a informacao "Amount" como "<preco>"
 
 Exemplos:
 | origem    | destino   | voo   | companhia      | nome          | bandeira         | preco     |
 | São Paolo | London    | 9696  | Aer Lingus     | Marcelo Dutra | Visa             | 555 USD   |
 | Portland  | Dublin    | 12    | Virgin America | Andreia Dutra | American Express | 555 USD   |
-| Boston    | New York  | 4346  | Lufthansa      | Rodrigo Dutra | Dinner´s Club    | 555 USD   |
+| Boston    | New York  | 4346  | Lufthansa      | Rodrigo Dutra | Diner's Club    | 555 USD   |
 
 
 
